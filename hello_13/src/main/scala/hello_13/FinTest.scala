@@ -4,6 +4,8 @@
 package hello_13
 
 import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.functions._
+import org.apache.spark.sql.types._
 
 object FinTest {
   def main(args: Array[String]) {
@@ -12,6 +14,8 @@ object FinTest {
       .appName("Fin Test")
       .getOrCreate()
     
+    import spark.implicits._
+
     val df1 = spark.read.options(Map("inferSchema"->"true","delimiter"->",","header"->"true"))
                         .csv("file:///home/hzg/work/helloScala/data-files/contractinfo.csv")
     df1.createOrReplaceTempView("contractinfo")
@@ -42,6 +46,11 @@ object FinTest {
 
     sqlDF2.show()
     
+    df1.printSchema()
+    var dft1 = df1.select($"agmt_name", $"txdate".cast(DateType).alias("txdate"), $"prod", $"accrue_organ", $"bal")
+    var dft3 = df3.select($"agmt_name", date_sub($"txdate", 1).alias("txdate"), $"prod", $"amt")
+    dft1.join(dft3, Seq("txdate", "agmt_name", "prod"), "inner").show()
+
     spark.stop()
   }
 }
