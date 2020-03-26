@@ -21,6 +21,11 @@ https://spark.apache.org/docs/2.2.1/
 spark自带管理器
 http://localhost:8080/
 
+交互式环境
+========
+
+./bin/spark-shell --master spark://localhost:7077
+
 提交计算
 =======
 
