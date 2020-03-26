@@ -15,8 +15,6 @@ object FinTest {
     val df1 = spark.read.options(Map("inferSchema"->"true","delimiter"->",","header"->"true"))
                         .csv("file:///home/hzg/work/helloScala/data-files/contractinfo.csv")
     df1.createOrReplaceTempView("contractinfo")
-    val sqlDF1 = spark.sql("SELECT distinct txdate FROM contractinfo")
-    sqlDF1.show()
 
     val df2 = spark.read.options(Map("inferSchema"->"true","delimiter"->",","header"->"true"))
                         .csv("file:///home/hzg/work/helloScala/data-files/purchase.csv")
@@ -26,6 +24,24 @@ object FinTest {
                         .csv("file:///home/hzg/work/helloScala/data-files/redeem.csv")
     df3.createOrReplaceTempView("redeem")
 
+    var sqlDF = spark.sql("""
+      select * from contractinfo t1, redeem t2
+      where date_sub(t2.txdate, 1)=cast(t1.txdate as date)
+        and t2.agmt_name=t1.agmt_name
+        and t2.prod=t1.prod
+    """)
+
+    sqlDF.show()
+
+    var sqlDF2 = spark.sql("""
+      select * from contractinfo t1, purchase t2
+      where t2.txdate=t1.txdate
+        and t2.agmt_name=t1.agmt_name
+        and t2.prod=t1.prod
+    """)
+
+    sqlDF2.show()
+    
     spark.stop()
   }
 }
