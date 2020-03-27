@@ -4,6 +4,39 @@
 ./sbin/start-master.sh -h localhost
 ./sbin/start-slave.sh spark://localhost:7077
 
+spark sql
+=========
+
+转成spark sql语句中的表
+df1.createOrReplaceTempView("contractinfo")
+
+var sqlDF = spark.sql("""
+    select * from contractinfo t1, redeem t2
+    where date_sub(t2.txdate, 1)=cast(t1.txdate as date)
+    and t2.agmt_name=t1.agmt_name
+    and t2.prod=t1.prod
+""")
+
+date_sub 是 spark sql 的内置函数
+
+sql的api接口文档（spark 2.2.1还没有，从spark 2.3.0开始有）
+https://spark.apache.org/docs/latest/api/sql/index.html
+
+spark dataframe
+===============
+
+import org.apache.spark.sql.functions._
+import org.apache.spark.sql.types._
+
+初始化spark后，import spark.implicits._
+
+df1.printSchema()
+var dft1 = df1.select($"agmt_name", $"txdate".cast(DateType).alias("txdate"), $"prod", $"accrue_organ", $"bal")
+var dft3 = df3.select($"agmt_name", date_sub($"txdate", 1).alias("txdate"), $"prod", $"amt")
+dft1.join(dft3, Seq("txdate", "agmt_name", "prod"), "inner").show()
+
+效果与spark sql相同
+
 提交计算
 =======
 
