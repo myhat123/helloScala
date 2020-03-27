@@ -39,3 +39,24 @@ res0: org.joda.time.DateTime = 2020-05-27T18:47:30.004+08:00
 
 scala> DateTime.now() to DateTime.tomorrow
 res1: org.joda.time.Interval = 2020-03-27T18:50:04.551+08:00/2020-03-28T18:50:04.552+08:00
+
+joda的用法
+=========
+https://www.joda.org/joda-time/userguide.html
+
+var dt = new DateTime()
+dt.getDayOfWeek()
+dt.getYear()
+dt.getMonthOfYear()
+dt.getHourOfDay()
+dt.getMinuteOfHour()
+
+dt.plusDays(60)
+
+nscala-time用法
+==============
+
+直接看代码，猜想用法
+https://github.com/nscala-time/nscala-time/blob/master/src/main/scala/com/github/nscala_time/time/RichDateTime.scala
+
+dt + 60.day
