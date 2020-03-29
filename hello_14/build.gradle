@@ -1,0 +1,24 @@
+allprojects {
+    repositories {
+        jcenter() 
+    }
+}
+
+subprojects {
+    version = '1.0'
+    apply plugin: 'scala'
+
+    dependencies {
+        compileOnly "org.apache.spark:spark-core_2.11:2.2.1"
+        compileOnly "org.apache.spark:spark-sql_2.11:2.2.1"
+
+        // Use Scala 2.13 in our library project
+        implementation 'org.scala-lang:scala-library:2.11.12'
+
+        // Use Scalatest for testing our library
+        testImplementation 'junit:junit:4.12'
+        testImplementation 'org.scalatest:scalatest_2.11:3.1.0'
+        testImplementation 'org.scalatestplus:junit-4-12_2.11:3.1.0.0'
+
+    }
+}
