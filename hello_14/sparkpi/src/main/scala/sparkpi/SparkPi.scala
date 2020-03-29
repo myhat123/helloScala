@@ -6,6 +6,7 @@ package sparkpi
 import scala.math.random
 
 import org.apache.spark.sql.SparkSession
+import conf.Utils
 
 /** Computes an approximation to pi */
 object SparkPi {
@@ -22,6 +23,7 @@ object SparkPi {
       if (x*x + y*y <= 1) 1 else 0
     }.reduce(_ + _)
     println("Pi is roughly " + 4.0 * count / (n - 1))
+    println("Sum: " + Utils.sum(2, 3))
     spark.stop()
   }
 }

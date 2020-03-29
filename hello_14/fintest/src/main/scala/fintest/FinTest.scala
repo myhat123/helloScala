@@ -7,6 +7,8 @@ import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.types._
 
+import conf.Utils
+
 object FinTest {
   def main(args: Array[String]) {
     val spark = SparkSession
@@ -51,6 +53,8 @@ object FinTest {
     var dft3 = df3.select($"agmt_name", date_sub($"txdate", 1).alias("txdate"), $"prod", $"amt")
     dft1.join(dft3, Seq("txdate", "agmt_name", "prod"), "inner").show()
 
+    println("Sum: " + Utils.sum(2, 3))
+    
     spark.stop()
   }
 }

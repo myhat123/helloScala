@@ -9,4 +9,5 @@
 
 rootProject.name = 'hello_14'
 
+include "conf"
 include "sparkpi", "fintest"
