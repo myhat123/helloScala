@@ -19,19 +19,22 @@ repositories {
     jcenter()
 }
 
-configurations {
-    assembly
-    compile.extendsFrom assembly
-}
+// configurations {
+//     assembly
+//     compile.extendsFrom assembly
+// }
 
-configurations {
-    provided
-    compile.extendsFrom provided
-}
+// configurations {
+//     provided
+//     compile.extendsFrom provided
+// }
 
 dependencies {
-    provided "org.apache.spark:spark-core_2.11:2.2.1"
-    provided "org.apache.spark:spark-sql_2.11:2.2.1"
+    // provided "org.apache.spark:spark-core_2.11:2.2.1"
+    // provided "org.apache.spark:spark-sql_2.11:2.2.1"
+
+    compileOnly "org.apache.spark:spark-core_2.11:2.2.1"
+    compileOnly "org.apache.spark:spark-sql_2.11:2.2.1"
 
     // Use Scala 2.13 in our library project
     implementation 'org.scala-lang:scala-library:2.11.12'
@@ -43,6 +46,6 @@ dependencies {
 
 }
 
-shadowJar {
-    configurations = [project.configurations.assembly]
-}
+// shadowJar {
+//     configurations = [project.configurations.assembly]
+// }

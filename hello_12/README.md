@@ -30,3 +30,27 @@ http://localhost:8080/
 =======
 
 spark-submit --master spark://localhost:7077 --class hello_12.SparkPi ./build/libs/hello_12-all.jar
+
+构建脚本更新
+==========
+
+build.gradle.orig 是原有的版本
+
+参照 https://www.jianshu.com/p/341744b98aaf
+
+修改 provided，这是与 gradle 版本有关
+
+$ gradle --version
+
+------------------------------------------------------------
+Gradle 6.2.2
+------------------------------------------------------------
+
+Build time:   2020-03-04 08:49:31 UTC
+Revision:     7d0bf6dcb46c143bcc3b7a0fa40a8e5ca28e5856
+
+Kotlin:       1.3.61
+Groovy:       2.5.8
+Ant:          Apache Ant(TM) version 1.10.7 compiled on September 1 2019
+JVM:          1.8.0_211 (Oracle Corporation 25.211-b12)
+OS:           Linux 5.3.0-40-generic amd64
