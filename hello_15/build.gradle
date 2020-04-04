@@ -25,6 +25,7 @@ dependencies {
     implementation 'org.scala-lang:scala-library:2.12.8'
     implementation 'org.postgresql:postgresql:42.2.11'
     implementation group: 'org.scalikejdbc', name: 'scalikejdbc_2.12', version: '3.4.1'
+    implementation group: 'com.github.nscala-time', name: 'nscala-time_2.12', version: '2.22.0'
 
     // Use Scalatest for testing our library
     testImplementation 'junit:junit:4.12'

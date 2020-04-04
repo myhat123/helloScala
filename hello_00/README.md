@@ -40,6 +40,12 @@ res0: org.joda.time.DateTime = 2020-05-27T18:47:30.004+08:00
 scala> DateTime.now() to DateTime.tomorrow
 res1: org.joda.time.Interval = 2020-03-27T18:50:04.551+08:00/2020-03-28T18:50:04.552+08:00
 
+scala> val s = DateTimeFormat.forPattern("yyyy-MM-dd")
+s: org.joda.time.format.DateTimeFormatter = org.joda.time.format.DateTimeFormatter@1835d3ed
+
+scala> var x = LocalDate.parse("2019-11-27", s)
+x: org.joda.time.LocalDate = 2019-11-27
+
 joda的用法
 =========
 https://www.joda.org/joda-time/userguide.html
