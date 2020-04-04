@@ -24,6 +24,13 @@ val qry: List[QryDtl] =
 ==============
 使用nscala-time和joda-time包，进行转换，把字符串型转成日期型，这里的日期型是joda LocalDate
 
+看源代码作为练习
+/*
+    https://github.com/nscala-time/nscala-time/blob/master/src/main/scala/com/github/nscala_time/time/Imports.scala
+    https://github.com/nscala-time/nscala-time/blob/master/src/main/scala/com/github/nscala_time/time/RichLocalDate.scala
+    https://github.com/nscala-time/nscala-time/blob/master/src/main/scala/com/github/nscala_time/time/StaticLocalDate.scala
+*/
+
 在scalikejdbc中是可以识别 joda LocalDate 的，见下方链接文档
 
 val s = DateTimeFormat.forPattern("yyyy-MM-dd")
