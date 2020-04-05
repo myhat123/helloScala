@@ -15,8 +15,9 @@ https://spark.apache.org/docs/2.2.1/
 启动spark
 =========
 
-./sbin/start-master.sh -h localhost
-./sbin/start-slave.sh spark://localhost:7077
+> ./sbin/start-master.sh -h localhost
+
+>./sbin/start-slave.sh spark://localhost:7077
 
 spark自带管理器
 http://localhost:8080/
@@ -24,12 +25,12 @@ http://localhost:8080/
 交互式环境
 ========
 
-./bin/spark-shell --master spark://localhost:7077
+> ./bin/spark-shell --master spark://localhost:7077
 
 提交计算
 =======
 
-spark-submit --master spark://localhost:7077 --class hello_12.SparkPi ./build/libs/hello_12-all.jar
+> spark-submit --master spark://localhost:7077 --class hello_12.SparkPi ./build/libs/hello_12-all.jar
 
 构建脚本更新
 ==========
@@ -40,6 +41,7 @@ build.gradle.orig 是原有的版本
 
 修改 provided，这是与 gradle 版本有关
 
+```
 $ gradle --version
 
 ------------------------------------------------------------
@@ -54,3 +56,4 @@ Groovy:       2.5.8
 Ant:          Apache Ant(TM) version 1.10.7 compiled on September 1 2019
 JVM:          1.8.0_211 (Oracle Corporation 25.211-b12)
 OS:           Linux 5.3.0-40-generic amd64
+```

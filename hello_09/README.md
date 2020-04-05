@@ -2,10 +2,11 @@
 
 https://guides.gradle.org/building-scala-libraries/
 
-gradle init --type scala-library
+> gradle init --type scala-library
 
 build.gradle 文件
 
+```groovy
 plugins {
     // Apply the scala plugin to add support for Scala
     id 'scala'
@@ -28,7 +29,8 @@ dependencies {
     // Need scala-xml at test runtime
     testRuntimeOnly 'org.scala-lang.modules:scala-xml_2.12:1.2.0'
 }
+```
 
-gradle build
+> gradle build
 
-scala -cp build/libs/hello_09.jar hello_09.Hello
+> scala -cp build/libs/hello_09.jar hello_09.Hello

@@ -1,6 +1,7 @@
 build.gradle
 ============
 
+```groovy
 plugins {
     .....
 
@@ -12,9 +13,11 @@ jar {
         attributes 'Main-Class': 'hello_10.Hello'
     }
 }
+```
 
-gradle build
-gradle shadowJar
+> gradle build
+
+> gradle shadowJar
 
 生成hello_10-all.jar
 

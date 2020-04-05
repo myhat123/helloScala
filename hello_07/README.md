@@ -2,6 +2,7 @@
 ===================
 
 scalac -d ./classes src/com/mine/hello/Utils.scala
+
 scalac -d ./classes -cp ./classes src/HelloWorld.scala
 
 scala -cp ./classes Hello
@@ -12,7 +13,9 @@ java -cp .:/home/hzg/scala-2.12.10/lib/scala-compiler.jar:/home/hzg/scala-2.12.1
 ===
 
 jar cvf libs/utils.jar -C classes com/mine/hello/Utils.class -C classes 'com/mine/hello/Utils$.class'
+
 scalac -d ./classes -cp libs/utils.jar src/HelloWorld.scala
+
 jar cvf libs/hello.jar -C classes Hello.class -C classes 'Hello$.class'
 
 scala -cp libs/utils.jar:libs/hello.jar Hello
