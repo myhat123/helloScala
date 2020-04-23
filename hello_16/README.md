@@ -35,18 +35,28 @@ subprojects {
 
 子项目构建
 ========
-> gradle :sparkpi:shadowJar
 
 > ./sbin/start-master.sh -h localhost
 
 > ./sbin/start-slave.sh spark://localhost:7077
 
-> spark-submit --master spark://localhost:7077 --class sparkpi.SparkPi ./sparkpi/build/libs/sparkpi-1.0-all.jar
 
+加载数据
+=======
 > gradle :fintest:shadowJar
 
 > spark-submit --master spark://localhost:7077 --class fintest.FinTest ./fintest/build/libs/fintest-1.0-all.jar
 
+清理数据
+=======
 > gradle :cleanup:shadowJar
 
 > spark-submit --master spark://localhost:7077 --class cleanup.CleanUp ./cleanup/build/libs/cleanup-1.0-all.jar brch_qry_dtl 2019-11-28
+
+cassandra
+=========
+
+cassandra 3.11.4  
+运行 cassandra -f
+
+data-files目录下有schema.cql中，创建 keyspace, table
