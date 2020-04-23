@@ -8,10 +8,14 @@ import org.apache.spark.sql.SparkSession
 import conf.Utils
 
 object CleanUp {
+  val tables = Map(
+    "brch_qry_dtl" -> "tran_date"
+  )
+
   def main(args: Array[String]) {
     val spark = SparkSession
       .builder
-      .appName("Clean Up")
+      .appName("删除cassandra数据")
       .getOrCreate()
     
     val tableName = args(0)
@@ -23,7 +27,11 @@ object CleanUp {
     val sc = spark.sparkContext
     // sc.cassandraTable("finance", "brch_qry_dtl").where("tran_date = ?", "2019-11-27").collect().foreach(println)
 
-    sc.cassandraTable("finance", tableName).where("tran_date = ?", cleanDate).deleteFromCassandra("finance", "brch_qry_dtl")
+    if (tables.contains(tableName)) {
+      val columnName = tables(tableName)
+      sc.cassandraTable("finance", tableName).where(s"${columnName} <= ?", cleanDate).deleteFromCassandra("finance", "brch_qry_dtl")
+    }
+
     spark.stop()
   }
 }

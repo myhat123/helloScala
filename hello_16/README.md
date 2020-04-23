@@ -33,21 +33,21 @@ subprojects {
 }
 ```
 
-子项目构建
-========
+spark本地运行
+============
 
 > ./sbin/start-master.sh -h localhost
 
 > ./sbin/start-slave.sh spark://localhost:7077
 
 
-加载数据
+写入数据
 =======
 > gradle :fintest:shadowJar
 
 > spark-submit --master spark://localhost:7077 --class fintest.FinTest ./fintest/build/libs/fintest-1.0-all.jar
 
-清理数据
+删除数据
 =======
 > gradle :cleanup:shadowJar
 

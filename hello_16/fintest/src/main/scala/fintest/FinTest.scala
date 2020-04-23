@@ -13,7 +13,7 @@ object FinTest {
   def main(args: Array[String]) {
     val spark = SparkSession
       .builder
-      .appName("Fin Test")
+      .appName("写入cassandra数据")
       .getOrCreate()
     
     import spark.implicits._
