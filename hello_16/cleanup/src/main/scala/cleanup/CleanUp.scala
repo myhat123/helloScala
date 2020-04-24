@@ -19,7 +19,8 @@ object CleanUp {
       .getOrCreate()
     
     val tableName = args(0)
-    val cleanDate = args(1)
+    val startDate = args(1)
+    val endDate = args(2)
 
     import spark.implicits._
     import com.datastax.spark.connector._
@@ -29,7 +30,7 @@ object CleanUp {
 
     if (tables.contains(tableName)) {
       val columnName = tables(tableName)
-      sc.cassandraTable("finance", tableName).where(s"${columnName} <= ?", cleanDate).deleteFromCassandra("finance", "brch_qry_dtl")
+      sc.cassandraTable("finance", tableName).where(s"${columnName} >= ?", startDate).where(s"${columnName} <= ?", endDate).deleteFromCassandra("finance", tableName)
     }
 
     spark.stop()

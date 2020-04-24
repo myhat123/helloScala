@@ -51,7 +51,7 @@ spark本地运行
 =======
 > gradle :cleanup:shadowJar
 
-> spark-submit --master spark://localhost:7077 --class cleanup.CleanUp ./cleanup/build/libs/cleanup-1.0-all.jar brch_qry_dtl 2019-11-28
+> spark-submit --master spark://localhost:7077 --class cleanup.CleanUp ./cleanup/build/libs/cleanup-1.0-all.jar brch_qry_dtl 2019-11-27 2019-11-28
 
 cassandra
 =========
