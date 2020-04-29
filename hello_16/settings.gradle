@@ -10,4 +10,4 @@
 rootProject.name = 'hello_16'
 
 include "conf"
-include "sparkpi", "fintest", "cleanup"
+include "sparkpi", "fintest", "cleanup", "cleanup2"

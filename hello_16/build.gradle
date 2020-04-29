@@ -21,6 +21,7 @@ subprojects {
             compileOnly "org.apache.spark:spark-core_2.11:2.2.1"
             compileOnly "org.apache.spark:spark-sql_2.11:2.2.1"
             implementation "com.datastax.spark:spark-cassandra-connector_2.11:2.0.10"
+            implementation "joda-time:joda-time:2.10.6"
 
             // Use Scala 2.13 in our library project
             compileOnly 'org.scala-lang:scala-library:2.11.12'

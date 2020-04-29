@@ -53,10 +53,8 @@ spark本地运行
 
 > spark-submit --master spark://localhost:7077 --class cleanup.CleanUp ./cleanup/build/libs/cleanup-1.0-all.jar brch_qry_dtl 2019-11-27 2019-11-28
 
-cassandra
-=========
+采用writetime来删除
 
-cassandra 3.11.4  
-运行 cassandra -f
+> gradle :cleanup2:shadowJar
 
-data-files目录下有schema.cql中，创建 keyspace, table
+> spark-submit --master spark://localhost:7077 --class cleanup2.CleanUp ./cleanup2/build/libs/cleanup2-1.0-all.jar brch_qry_dtl 2020-04-29

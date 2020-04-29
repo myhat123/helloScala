@@ -9,4 +9,4 @@ create table brch_qry_dtl (
     rpt_sum text, 
     timestamp1 varchar,
     primary key (acc, timestamp1, dr_cr_flag)
-);
+) with gc_grace_seconds = 0;
