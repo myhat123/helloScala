@@ -10,6 +10,12 @@ cassandra 3.11.4
 
 data-files目录下有schema.cql中，创建 keyspace, table
 
+运行cqlsh，操作时长设置 --request-timeout
+
+> cqlsh --request-timeout=120 localhost
+
+> cqlsh -u xxx -p xxxx localhost
+
 设置gc_grace_seconds，默认是10天，调整这个参数为0，让后台立即清理数据
 
 ```sql
