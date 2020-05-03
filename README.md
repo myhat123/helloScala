@@ -17,4 +17,5 @@ hello_12  spark包内示例SparkPi计算
 hello_13  spark sql和dataframe示例  
 hello_14  spark多项目构建  
 hello_15  spark访问数据库及读取数据表示例  
-hello_16  spark cassandra connector写入和删除cass数据
+hello_16  spark cassandra connector写入和删除cass数据  
+hello_17  spark python写入和计算cassandra
