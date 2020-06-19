@@ -12,7 +12,7 @@ object SparkPi {
   def main(args: Array[String]) {
     val spark = SparkSession
       .builder
-      .appName("Spark Pi")
+      .appName("Spark Pi计算")
       .getOrCreate()
     val slices = if (args.length > 0) args(0).toInt else 2
     val n = math.min(100000L * slices, Int.MaxValue).toInt // avoid overflow

@@ -57,3 +57,43 @@ Ant:          Apache Ant(TM) version 1.10.7 compiled on September 1 2019
 JVM:          1.8.0_211 (Oracle Corporation 25.211-b12)
 OS:           Linux 5.3.0-40-generic amd64
 ```
+
+rest api
+========
+
+curl -X POST http://localhost:6066/v1/submissions/create --header "Content-Type:application/json;charset=UTF-8" --data '{
+  "appResource": "/home/hzg/work/helloScala/hello_12/build/libs/hello_12-all.jar",
+  "sparkProperties": {
+    "spark.executor.memory": "1g",
+    "spark.master": "spark://localhost:7077",
+    "spark.driver.memory": "1g",
+    "spark.driver.cores": "2",
+    "spark.eventLog.enabled": "false",
+    "spark.app.name": "hello 12 sparkPi",
+    "spark.submit.deployMode": "client",
+    "spark.jars": "/home/hzg/work/helloScala/hello_12/build/libs/hello_12-all.jar",
+    "spark.driver.supervise": "true"
+  },
+  "clientSparkVersion": "2.2.1",
+  "mainClass": "hello_12.SparkPi",
+  "environmentVariables": {
+    "SPARK_ENV_LOADED": "1"
+  },
+  "action": "CreateSubmissionRequest",
+  "appArgs": [
+  ]
+}'
+
+{
+  "action" : "CreateSubmissionResponse",
+  "message" : "Driver successfully submitted as driver-20200619201032-0000",
+  "serverSparkVersion" : "2.2.1",
+  "submissionId" : "driver-20200619201032-0000",
+  "success" : true
+}
+
+curl http://localhost:6066/v1/submissions/kill/driver-20200619201739-0000
+
+curl http://localhost:6066/v1/submissions/status/driver-20200619201739-0000
+
+curl http://localhost:8080/json/
