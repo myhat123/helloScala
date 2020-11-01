@@ -56,3 +56,23 @@ case class QryDtl (
 
 类型说明文档
 http://scalikejdbc.org/documentation/sql-interpolation.html
+
+代码格式
+=======
+
+增加scalariform
+
+https://github.com/hierynomus/scalariform-gradle-plugin
+
+```groovy
+plugins {
+  id "com.github.hierynomus.scalariform" version "0.4.0"
+}
+
+scalariform {
+  alignParameters = true
+  alignSingleLineCaseStatements = true
+}
+```
+
+> gradle formatAllScala
