@@ -31,7 +31,7 @@ https://mvnrepository.com/artifact/joda-time/joda-time/2.10.5
 ==========
 
 ```
-$ scala -cp libs/joda-convert-2.2.1.jar:./libs/joda-time-2.10.5.jar:./libs/nscala-time_2.12-2.22.0.jar
+$ scala -cp libs/joda-convert-2.2.1.jar:./libs/joda-time-2.10.8.jar:./libs/nscala-time_2.12-2.24.0.jar
 Welcome to Scala 2.12.10 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_211).
 Type in expressions for evaluation. Or try :help.
 
@@ -44,11 +44,20 @@ res0: org.joda.time.DateTime = 2020-05-27T18:47:30.004+08:00
 scala> DateTime.now() to DateTime.tomorrow
 res1: org.joda.time.Interval = 2020-03-27T18:50:04.551+08:00/2020-03-28T18:50:04.552+08:00
 
-scala> val s = DateTimeFormat.forPattern("yyyy-MM-dd")
+scala> val s = DateTimeFormat.forPattern("yyyyMMdd")
 s: org.joda.time.format.DateTimeFormatter = org.joda.time.format.DateTimeFormatter@1835d3ed
 
-scala> var x = LocalDate.parse("2019-11-27", s)
+scala> var x = LocalDate.parse("20191127", s)
 x: org.joda.time.LocalDate = 2019-11-27
+
+scala> "20201010".toLocalDateOption("yyyyMMdd")
+res5: Option[org.joda.time.LocalDate] = Some(2020-10-10)
+
+scala> var y = x + 1.day
+y: org.joda.time.LocalDate = 2019-11-28
+
+scala> y.toString("yyyyMMdd")
+res7: String = 20191128
 ```
 
 joda的用法
