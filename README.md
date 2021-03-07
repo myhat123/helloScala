@@ -21,3 +21,4 @@ hello_16  spark cassandra connector写入和删除cass数据
 hello_17  spark python写入和计算cassandra
 
 hello_18  增加nscala-time示例代码
+hello_19  fernet加解密示例代码
